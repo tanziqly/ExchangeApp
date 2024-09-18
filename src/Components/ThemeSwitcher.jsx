@@ -1,28 +1,17 @@
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
+import useDarkTheme from "../Hooks/useDarkTheme";
 
 export default function Switcher() {
-  const [OpenSwitch, setOpenSwitch] = useState(false);
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  const { isDarkMode, toggleTheme } = useDarkTheme();
+  const [OpenSwitch, setOpenSwitch] = useState(isDarkMode);
 
   useEffect(() => {
-    const theme = localStorage.getItem("theme");
-    if (theme === "dark") {
-      window.document.documentElement.classList.add("dark");
-      setIsDarkMode(true);
-    }
-  }, []);
+    setOpenSwitch(isDarkMode);
+  }, [isDarkMode]);
 
   const handleSwitch = () => {
     setOpenSwitch(!OpenSwitch);
-
-    if (isDarkMode) {
-      window.document.documentElement.classList.remove("dark");
-      localStorage.setItem("theme", "light");
-    } else {
-      localStorage.setItem("theme", "dark");
-      window.document.documentElement.classList.add("dark");
-    }
-    setIsDarkMode(!isDarkMode);
+    toggleTheme();
   };
 
   return (
@@ -30,18 +19,22 @@ export default function Switcher() {
       className="flex gap-2 items-center text-[#545454]"
       onClick={handleSwitch}
     >
-      <span className={`text-xs font-medium ${OpenSwitch ? "" : "text-white"}`}>
-        Dark
-      </span>
-      <div
-        className={`flex justify-start items-center rounded-full w-8 h-4 bg-[#212121] ${
-          OpenSwitch ? "justify-end" : "justify-start"
+      <span
+        className={`text-xs text-black dark:text-[#545454] font-medium ${
+          OpenSwitch ? "" : "text-white"
         }`}
       >
-        <div className="w-5 h-5 rounded-full bg-white"></div>
-      </div>
-      <span className={`text-xs font-medium ${OpenSwitch ? "text-white" : ""}`}>
         Light
+      </span>
+      <div className="flex relative justify-start transition duration-300 ease-in-out items-center rounded-full w-8 h-4 bg-[#AFAFAF] dark:bg-[#212121]">
+        <div
+          className={`absolute w-5 h-5 rounded-full transition duration-300 ease-in-out bg-black dark:bg-white ${
+            OpenSwitch ? "translate-x-2/3" : "translate-x-0"
+          }`}
+        ></div>
+      </div>
+      <span className="text-xs font-medium text-[#BDBDBD] dark:text-white">
+        Dark
       </span>
     </button>
   );
