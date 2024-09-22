@@ -4,7 +4,7 @@ import Switcher from "./ThemeSwitcher";
 
 export default function Header() {
   return (
-    <div className="w-full max-w-[1440px] py-4 flex justify-between">
+    <div className="w-full max-w-[1440px] px-4 py-4 flex justify-between">
       <ul className="flex gap-8 text-base text-[#ACACAC] dark:text-[#545454]">
         <li>
           <NavLink

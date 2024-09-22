@@ -19,11 +19,7 @@ export default function Switcher() {
       className="flex gap-2 items-center text-[#545454]"
       onClick={handleSwitch}
     >
-      <span
-        className={`text-xs text-black dark:text-[#545454] font-medium ${
-          OpenSwitch ? "" : "text-white"
-        }`}
-      >
+      <span className="text-xs text-black dark:text-[#545454] font-medium ">
         Light
       </span>
       <div className="flex relative justify-start transition duration-300 ease-in-out items-center rounded-full w-8 h-4 bg-[#AFAFAF] dark:bg-[#212121]">
