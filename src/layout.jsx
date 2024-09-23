@@ -1,16 +1,16 @@
 import Header from "./Components/Header";
 import Footer from "./Components/Footer";
 
-export default function layout({ children }) {
+export default function Layout({ children }) {
   return (
-    <>
-      <nav className="flex justify-center border-b border:[#BDBDBD] dark:border-[#545454]">
+    <div className="flex flex-col min-h-screen">
+      <nav className="flex justify-center border-b border-[#BDBDBD] dark:border-[#545454]">
         <Header />
       </nav>
-      {children}
-      <footer className="absolute text-black bottom-0 border-t border-[#bcbcbc] dark:border-[#545454] w-full flex justify-center">
+      <div className="flex-grow">{children}</div>
+      <footer className="text-black border-t border-[#bcbcbc] dark:border-[#545454] w-full flex justify-center">
         <Footer />
       </footer>
-    </>
+    </div>
   );
 }

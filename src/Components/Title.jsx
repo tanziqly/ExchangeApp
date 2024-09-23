@@ -17,18 +17,18 @@ export default function Title({ button, children, pbottom }) {
     <div
       className={`${pbottom} w-full max-w-[1440px] px-5 dark:text-[#545454] text-[#5f5f5f]`}
     >
-      <div className="flex mb-8 gap-3 flex-col w-full max-w-[944px]">
-        <h1 className="dark:text-white text-black text-5xl font-black">
+      <div className="flex mb-8 gap-1 sm:gap-3 flex-col w-full max-w-[944px]">
+        <h1 className="dark:text-white text-black text-4xl sm:text-5xl font-black">
           Official exchange rates on this day
         </h1>
-        <span>
+        <span className="text-sm sm:text-base">
           The Central Bank of the Russian Federation has set from {currentDate}{" "}
           the following exchange rates of foreign currencies against the ruble
           without assuming any liability to buy or sell foreign currency at the
           rates below
         </span>
-        <div className="flex gap-4 mt-5">
-          <div className="px-3 py-2 border border-[#5f5f5f] dark:border-[#545454] w-fit rounded">
+        <div className="flex gap-0 sm:gap-4 mt-5">
+          <div className="px-3 text-sm sm:text-base py-2 border border-[#5f5f5f] dark:border-[#545454] w-fit rounded">
             {currentDate}
           </div>
           <Link to="/exchange">

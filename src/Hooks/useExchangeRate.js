@@ -4,6 +4,7 @@ import axios from "axios";
 const useExchangeRate = (inputValue1, inputValue2, clickButton) => {
   const [course, setCourse] = useState(null);
   const [fromValuteDetails, setFromValuteDetails] = useState(null);
+  const [toValuteDetails, setToValuteDetails] = useState(null);
 
   useEffect(() => {
     const apiUrl = `https://www.cbr-xml-daily.ru/daily_json.js`;
@@ -19,12 +20,14 @@ const useExchangeRate = (inputValue1, inputValue2, clickButton) => {
           calculatedCourse = Math.trunc(calculatedCourse * 100) / 100;
           setCourse(calculatedCourse);
           setFromValuteDetails(fromValute);
+          setToValuteDetails(toValute);
         } else {
           setCourse(null);
           setFromValuteDetails(null);
+          setToValuteDetails(null);
         }
       } catch (err) {
-        console.log(err);
+        console.error(err);
       }
     };
 
@@ -33,7 +36,7 @@ const useExchangeRate = (inputValue1, inputValue2, clickButton) => {
     }
   }, [clickButton, inputValue1, inputValue2]);
 
-  return { course, fromValuteDetails };
+  return { course, fromValuteDetails, toValuteDetails };
 };
 
-export default useExchangeRate;
+export default useExchangeRate; // Убедитесь, что здесь используется default export

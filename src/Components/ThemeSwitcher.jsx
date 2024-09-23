@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import useDarkTheme from "../Hooks/useDarkTheme";
 
-export default function Switcher() {
+export default function Switcher({ className }) {
   const { isDarkMode, toggleTheme } = useDarkTheme();
   const [OpenSwitch, setOpenSwitch] = useState(isDarkMode);
 
@@ -16,7 +16,7 @@ export default function Switcher() {
 
   return (
     <button
-      className="flex gap-2 items-center text-[#545454]"
+      className={`${className} flex gap-2 items-center text-[#545454]`}
       onClick={handleSwitch}
     >
       <span className="text-xs text-black dark:text-[#545454] font-medium ">
