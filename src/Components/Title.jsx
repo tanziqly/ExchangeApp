@@ -27,7 +27,7 @@ export default function Title({ button, children, pbottom }) {
           without assuming any liability to buy or sell foreign currency at the
           rates below
         </span>
-        <div className="flex gap-0 sm:gap-4 mt-5">
+        <div className="flex gap-4 mt-5">
           <div className="px-3 text-sm sm:text-base py-2 border border-[#5f5f5f] dark:border-[#545454] w-fit rounded">
             {currentDate}
           </div>
